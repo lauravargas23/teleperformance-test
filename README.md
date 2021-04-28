@@ -1,7 +1,7 @@
 # teleperformance-test
 Test back-end
 
-##Development server
+## Development server
 
 ### Angular application
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Esta aplicación utiliza todas las API. En la sección Free Api valida la extensión de la imagen generada. Los archivos .Gif y .mp4 no son extensiones validas para el visor de imagenes. The login section use the API to validate and authenticate users sessions. The technologies section add, list, modify and delete objects from the database and need the user authentication.
