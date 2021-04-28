@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="text-title">Create account</h1>
+    <div class="card card-container">
+        <form #loginForm="ngForm" (ngSubmit)="signUpAction(loginForm)">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="form-control" type="email" ngModel [email]="true" name="email" #email="ngModel" [(ngModel)]="signupService.data.email"
+                        placeholder="Email">
+                </div>
+               
+                <div class="input-field col s12">
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="signupService.data.password"
+                        placeholder="Password">
+                </div>
+                <div class="input-field col s12">
+                    <input type="password" name="passwordRepeat" #passwordRepeat="ngModel" [(ngModel)]="signupService.data.passwordRepeat"
+                        placeholder="Password">
+                </div>
+                <div class="card-action" style="margin-left: -25px">
+                    <div class="input-field col s12">
+                        <button class="btn button-left">Sign up</button>
+                        <button class="btn button-rigth" (click)="navigateTo('/')">Login</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

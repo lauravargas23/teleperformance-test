@@ -1,0 +1,43 @@
+.card-container {
+    width: 50%;
+    margin: auto;
+    padding: 40px;
+}
+
+.col-container {
+    margin-top: 50px;
+}
+
+.text-title {
+    color: #540581;
+    font-family: "Great Vibes", cursive;
+    font-size: 40px;
+    font-weight: normal;
+    margin-bottom: 70px;
+    text-align: center;
+    text-shadow: 0 5px 5px rgb(153, 153, 153);
+}
+
+.img-tech {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.carousel-container {
+    max-width: 245px;
+    max-height: 245px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.button-left {
+    color: #540581;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.button-rigth {
+    color: #d40667;
+    background-color: transparent;
+}

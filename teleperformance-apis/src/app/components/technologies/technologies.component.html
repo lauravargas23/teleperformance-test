@@ -1,0 +1,78 @@
+<div *ngIf="authorized == true">
+    <div class="container col-container">
+        <h1 class="text-title">Technologies used by me</h1>
+        <div class="row">
+            <div class="col s5">
+                <div class="card card-container">
+                    <form #technologyForm="ngForm" (ngSubmit)="addTechnology(technologyForm)">
+                        <div class="row">
+                            <input type="hidden" name="_id" #_id="ngModel"
+                                [(ngModel)]="technologyService.selectedTechnology._id">
+                            <div class="input-field col s12">
+                                <input type="text" name="title" #title="ngModel"
+                                    [(ngModel)]="technologyService.selectedTechnology.title"
+                                    placeholder="Title">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="url" #url="ngModel"
+                                    [(ngModel)]="technologyService.selectedTechnology.url" placeholder="Url">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="category" #category="ngModel"
+                                    [(ngModel)]="technologyService.selectedTechnology.category"
+                                    placeholder="Category">
+                            </div>
+                            <div class="card-action" style="margin-left: -25px">
+                                <div class="input-field col s12">
+                                    <button class="btn button-left"><i class="material-icons">add</i></button>
+                                    <button class="btn button-rigth" (click)="clean(technologyForm)"><i
+                                            class="material-icons">clear</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col s7">
+                <div class="row">
+                    <div class="col s5">
+                        <div id="carouselExampleControls" class="carousel slide carousel-container"
+                            data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <img class="img-tech" src="{{ getSlide() }}" alt="slide">
+                            </div>
+                            <button class="btn button-left" (click)='getPrev()'><i
+                                    class="material-icons">keyboard_arrow_left</i></button>
+                            <button class="btn button-rigth" (click)='getNext()'><i
+                                    class="material-icons">keyboard_arrow_right</i></button>
+                        </div>
+                    </div>
+                    <div class="col s7">
+                        <table>
+                            <thead>
+                                <th>Title</th>
+                                <th>Category</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let technology of technologyService.technologies">
+                                    <td>{{ technology.title }}</td>
+                                    <td style="display:none">{{ technology.url }}</td>
+                                    <td>{{ technology.category }}</td>
+                                    <td><a class="button-left" (click)="editTechnology(technology)"><i
+                                                class="material-icons">edit</i></a></td>
+                                    <td><a class="button-rigth" (click)="deleteTechnology(technology._id)"><i
+                                                class="material-icons">delete</i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="authorized == false">
+    <div class="container no-authorized">
+        <img src="../../../assets/Not authorized.jpg" alt="No authorized">
+    </div>
+</div>
