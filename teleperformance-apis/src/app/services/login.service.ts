@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   data: Login;
-  token: string;
+  public token: any;
   readonly URL_API = 'http://localhost:3000/api/users';
 
   constructor(private http: HttpClient) {
     this.data = new Login();
-    this.token = "";
+    this.token = null;
   }
 
   login(login: Login): Observable<Response> {
@@ -22,9 +22,9 @@ export class LoginService {
   }
 
   logout(): void {
-    this.token = "";
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
+    this.token = null;
   }
 
   saveToken(token: string, expiresIn: string): void {
