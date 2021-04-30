@@ -5,20 +5,21 @@ const bcrypt = require('bcrypt');
 const UserSchema = new Schema({
     email: { type: String, lowercase: true },
     displayName: String,
-    password: { type: String, select: true },
+    password: { type: String/*, select: true*/ },
     signupDate: { type: Date, default: Date.now() },
     lastLogin: Date
 });
 
 UserSchema.pre('save', async function (next) {
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) return next(err);
-        bcrypt.hash(this.password, salt, null, (err, hash) => {
-            if (err) return next(err);
-            this.password = hash;
-            next();
-        });
-    });
+    const rounds = 10;
+    try {
+        if (this.password && this.isModified('password')) {
+            this.password = await bcrypt.hash(this.password, rounds);
+        }
+        next();
+    } catch (err) {
+        next(err);
+    }
 });
 
 UserSchema.methods.isValidPassword = async function (password) {
